@@ -22,6 +22,9 @@ curl -i -u Administrator:password -X POST http://127.0.0.1:8091/settings/indexes
 # Load travel-sample bucket
 curl -v -u Administrator:password -X POST http://127.0.0.1:8091/sampleBuckets/install -d '["travel-sample"]'
 
+# Create sync gateway user account
+curl -v -u Administrator:password -X PUT http://127.0.0.1:8091/settings/rbac/users/local/sycnGatewayUser -H "Content-Type: application/x-www-form-urlencoded" -d 'roles=admin&name=&password=bigBadW0lf!'
+
 echo "Type: $TYPE"
 
 if [ "$TYPE" = "WORKER" ]; then
